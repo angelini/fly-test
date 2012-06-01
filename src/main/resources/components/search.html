@@ -1,0 +1,25 @@
+<form name="search" data-ftype="form" data-url="/products" data-bind="searchResults" data-validate="true" class="span2">
+  <h3 style="margin-bottom: 15px;">Search</h3>
+  <div>
+    <label>Name:</label><input type="text" data-ftype="input" name="name" data-rules="alpha_numeric" />
+  </div>
+  <div>
+    <label>Release Date:</label><input type="text" data-ftype="date" name="date"/>
+  </div>
+  <div>
+    <label>Type:</label><div data-ftype="dropdown" data-bind="types" data-name="type"></div>
+  </div>
+  <input class="btn" type="submit" value="Submit" style="margin-top: 10px;" />
+</form>
+
+<div class="span10">
+  <h3 style="margin-bottom: 15px;">Products</h3>
+  <div data-ftype="table" data-bind="searchResults" data-selected="rowSelect">
+    <div data-ftype="table:column" data-header="ID" data-bind="id" data-index="true"></div>
+    <div data-ftype="table:column" data-header="Name" data-bind="name"></div>
+    <div data-ftype="table:column" data-header="Price" data-bind="price"></div>
+    <div data-ftype="table:column" data-header="Description" data-bind="description"></div>
+    <div data-ftype="table:column" data-header="Release Date" data-bind="releaseDate"></div>
+    <div data-ftype="table:column" data-header="Type" data-bind="type"></div>
+  </div>
+</div>

@@ -19,9 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			FlyDB db = new FlyDB(CONNECTION, USER, PASS);
-			Fly server = new Fly(PORT, db);
-			
-			server.addHTMLFolder("/htdocs");
+			Fly server = new Fly(PORT, db, "/htdocs", "/components");
 			
 			server.addServlet(ProductRoutes.class, "/products/*");
 			
