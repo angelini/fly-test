@@ -7,10 +7,10 @@
   </div>
 
   <div class="row-fluid">
-    <form data-ftype="form" data-url="/products" data-bind="searchResults" class="span2">
+    <form name="search" data-ftype="form" data-url="/products" data-bind="searchResults" data-validate="true" class="span2">
       <h3 style="margin-bottom: 15px;">Search</h3>
       <div>
-        <label>Name:</label><input type="text" data-ftype="input" name="name" />
+        <label>Name:</label><input type="text" data-ftype="input" name="name" data-rules="alpha_numeric" />
       </div>
       <div>
         <label>Release Date:</label><input type="text" data-ftype="date" name="date"/>

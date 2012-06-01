@@ -3,7 +3,6 @@ package com.angelini.flyTest;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,22 +47,7 @@ public class ProductRoutes implements RoutedServlet {
 	public void allProducts(HttpRequest req, HttpResponse resp) throws IOException {
 		String name = req.getQuery("name");
 		String type = req.getQuery("type");
-		String dateString = req.getQuery("date");
-		Date date = null;
-		
-		if (dateString != null && dateString.length() != 0) {
-			String[] split = dateString.split("/");
-			
-			if (split.length == 3) {
-				Calendar cal = Calendar.getInstance();
-				
-				cal.set(Calendar.YEAR, Integer.parseInt(split[0]));
-				cal.set(Calendar.MONTH, Integer.parseInt(split[1]) - 1);
-				cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(split[2]));
-				
-				date = cal.getTime();
-			}
-		}
+		Date date = req.getQueryDate("date");
 		
 		try {
 			Connection conn = db.getConn();
