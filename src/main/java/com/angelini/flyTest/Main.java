@@ -23,6 +23,8 @@ public class Main {
 			
 			server.addServlet(ProductRoutes.class, "/products/*");
 			
+			server.requireAuth(Auth.class);
+			
 			server.start();
 			
 		} catch (Exception e) {
