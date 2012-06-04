@@ -21,10 +21,10 @@ public class Auth implements AuthenticationCheck {
 		this.db = db;
 	}
 
-	public boolean check(String username, String password) {
+	public String check(String username, String password) {
 		try {
 			Connection conn = db.getConn();
-			String sql = " SELECT password" +
+			String sql = " SELECT id, password" +
 						 " FROM users" +
 						 " WHERE username = ?";
 			
@@ -33,15 +33,15 @@ public class Auth implements AuthenticationCheck {
 			
 			ResultSet result = query.executeQuery();
 			if (result.next() && result.getString("password").equals(password)) {
-				return true;
+				return result.getString("id") + ":" + username;
 			}
 			
 		} catch (SQLException e) {
 			log.error("Error verifying username & password", e);
-			return false;
+			return null;
 		}
 		
-		return false;
+		return null;
 	}
 
 }
