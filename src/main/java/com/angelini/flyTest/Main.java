@@ -19,8 +19,9 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			FlyDB db = new FlyDB(CONNECTION, USER, PASS);
-			Fly server = new Fly(PORT, db, "/htdocs", "/components");
+			Fly server = new Fly(PORT, db, "/htdocs");
 			
+			server.addComponent("search", "/components/search.html");			
 			server.addServlet(ProductRoutes.class, "/products/*");
 			
 			server.requireAuth(Auth.class);
